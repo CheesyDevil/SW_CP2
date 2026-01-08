@@ -1,10 +1,27 @@
 # !-is used to take and action/use an ability  ?-is used to get info on the action/ablity/item 
 import random
 
+#Integers
+level=1
+prof=((level-1)//4)+2
 #Lists
 hands=[]
+
+Strength=[14]
+Strength.append((Strength[0]-10)//2)
+Dexterity=[14]
+Dexterity.append((Dexterity[0]-10)//2)
+Constitution=[14]
+Constitution.append((Constitution[0]-10)//2)
+Intelligence=[14]
+Intelligence.append((Intelligence[0]-10)//2)
+Wisdom=[14]
+Wisdom.append((Wisdom[0]-10)//2)
+Charisma=[14]
+Charisma.append((Charisma[0]-10)//2)
 #strings
 choice=""
+ability=Strength[1]
 #dictionaries
 weapons={
 'Club':["1d4","Bludgeoning","Strength","Slow","Light",2],
@@ -50,13 +67,47 @@ weapons={
 'Pistol':["1d10","Piercing","Dexterity","Vex","Ammunition (30/90); Bullet","Loading",3],
 }
 
-def roll(weapon,hands,choice):
-    if "Two-Handed" in weapon[choice] and hands[0]==hands[1] and len(weapon[choice])<5:
-        if weapon!="Quarterstaff":
-            dmg=random.randint(1,10)
-        else:
-            dmg=random.randint(1,8)
+mastery={
+"Cleave":"On a hit you may attack an adjacent enemy",
+"Graze":f"you still deal  {ability} to the target",
+"Nick":"Light bonus attack no longer takes up your bonus action",
+"Push":"you can push a Large or smaller enemy up to 10 feet",
+"Sap":"Enemy has disadvantage on it's next attack",
+"Slow":"Enemy has 10 less speed for the next round",
+"Topple":f"Enemy must succeed a DC{Strength[1]+8+prof} con saving throw or be knocked prone",
+"Vex":"You have advantage while attacking this enemy for the rest of your turn"
+}
+
+
+#functions
+def weaponroll(weapon,hands,choice,ability,Strength,Dexterity):
+    if weapon[choice][2]=="Strength":
+        ability=Strength[1]
+    elif weapon[choice][2]=="Dexterity":
+        ability=Dexterity[1]
+    elif Dexterity[0]>=Strength[0]:
+        ability=Dexterity[1]
     else:
-        for i in list(weapon[choice])[0]:
+        ability=Strength[1]
+
+    if "Two-Handed" in weapon[choice] and hands[0]==hands[1] and len(weapon[choice])<5:
+        if weapon[choice]!="Quarterstaff":
+            dmg=random.randint(1,10)+ability
+        else:
+            dmg=random.randint(1,8)+ability
+    elif 'Light'in weapon[choice]:
+        for i in int(list(weapon[choice])[0]):
             dmg+=random.randint(1,int(list(weapon[choice])[2]))
+    else:
+        for i in int(list(weapon[choice])[0]):
+            dmg+=random.randint(1,int(list(weapon[choice])[2]))
+        dmg+=ability
     print(f"You dealt {dmg} {weapon[choice][1]} damage")
+
+def roll(choice):
+    roll=[]
+    for i in int(list(choice)[1]):
+        roll.append(random.randint(1,int(list(choice)[3])))
+        total+=random.randint(1,int(list(choice)[3]))
+    rolls=" ".join(roll)
+    print(f"You rolled {rolls} or atotal of {total}")

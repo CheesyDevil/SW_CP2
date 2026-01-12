@@ -48,7 +48,7 @@ def compound():
     rate=insure()
     print("HOw many years has the account been compounding?")
     time=insure()
-    print(f"after {time} years, your origional {origional} has grown to {((rate+1)^time)*origional}")
+    print(f"after {time} years, your origional {origional} has grown to {((rate+1)**time)*origional/100}")
         
 #budget allocator function (for user input for number of budget catagories: user input for catagories, user input for total budget*user input for the catoagory percentage)
 def allcoate():
@@ -59,14 +59,14 @@ def allcoate():
     print("What is your total budget")
     total_budget=insure()
     for i in range(0,catagories):
-        name=input(f"What is catagory {i}'s name?\n")
-        catagory_names.append[name]
+        name=input(f"What is catagory {i+1}'s name?\n")
+        catagory_names.append(name)
     for i in range(0,catagories):
-        print(f"What % of you budget is going in {catagory_names[i-1]}")
+        print(f"What % of you budget is going in {catagory_names[i]}")
         budget=insure()
-        catagory_budget.append[budget]
+        catagory_budget.append(budget)
     for i in range(0,catagories):
-        print(f"{catagory_names[i-1]}:${((catagory_budget[i-1])/100)*total_budget}")
+        print(f"{catagory_names[i]}:${((catagory_budget[i])/100)*total_budget}")
     
 #Sale price function ((1-user input discount%)*user input for origional price)
 def sale():

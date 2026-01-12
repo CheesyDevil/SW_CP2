@@ -1,6 +1,6 @@
 #SW 2nd Finantial Calculator
 
-#number ensure function (make sure user input is a number(apply to all other functoins))
+#number ensure function (make sure user input is a number(with parameters)
 def ensure(l,h):
     while True:
         num=input()
@@ -14,6 +14,7 @@ def ensure(l,h):
                 return int(num)
             else:
                 print("Please enter a valid input")
+#number ensure function (make sure user input is a number(without parameters)
 def insure():
     while True:
         num=input()

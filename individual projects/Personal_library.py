@@ -5,6 +5,20 @@
 weapons={
 
 }
+#number ensure function (make sure user input is a number(with parameters)
+def ensure(l,h):
+    while True:
+        num=input()
+        if l and h:
+            if f"{num}".isnumeric() and  int(num) in range(l,h):
+                return int(num)
+            else:
+                print("Please enter a valid input")
+        else:
+            if f"{num}".isnumeric():
+                return int(num)
+            else:
+                print("Please enter a valid input")
 #view function (prints Weapon name and info)
 def view(dictionary):
     for key in dictionary:
@@ -27,4 +41,15 @@ def minus(dictionary):
         print(f"{name} wasn't found in inventory")
     return dictionary
 #Search (ask what they want to search by (effect or name) and print any weapons that fufil the requirements)
-
+def search(dictionary):
+    print("How would you like to search your inventory\n1. name\n2. feature")
+    bol=ensure(1,3)
+    inp=input("What are you searching for?")
+    if bol==1:
+        if inp in dictionary:
+            print(f"{inp}:{dictionary[inp]}")
+        else:
+            print(f"{inp} not in inventory")
+    if bol==2:
+        if f'{inp}' in dictionary.values():
+            

@@ -5,5 +5,5 @@ dictionary={
 }
 print(dictionary["1"])
 
-if '0' in dictionary:
+if '0' in dictionary.values():
     print("yes")

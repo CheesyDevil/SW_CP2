@@ -42,6 +42,7 @@ def minus(dictionary):
     return dictionary
 #Search (ask what they want to search by (effect or name) and print any weapons that fufil the requirements)
 def search(dictionary):
+    key=list(dict(dictionary).keys())
     print("How would you like to search your inventory\n1. name\n2. feature")
     bol=ensure(1,3)
     inp=input("What are you searching for?")
@@ -51,5 +52,25 @@ def search(dictionary):
         else:
             print(f"{inp} not in inventory")
     if bol==2:
-        if f'{inp}' in dictionary.values():
-            
+        for i in range(0,len(key)):
+            if f'{inp}' in dictionary[key[i]]:
+                print(f"{key[i]}:{dictionary[key[i]]}")
+            else:
+                continue
+#main function for loop
+def main(dictionary):
+    while True:
+        print(f"1:View your weapons\n2:add weapon to inventory\n3:remove item from inventory\n4:search inventory for specific weapon/attribute\n5:Exit calculator\nWhich option do you want to use?")
+        inp=ensure(1,6)
+        if inp==1:
+            view(dictionary)
+        elif inp==2:
+            plus(dictionary)
+        elif inp==3:
+            minus(dictionary)
+        elif inp==4:
+            search(dictionary)
+        elif inp==5:
+            break
+
+main(weapons)

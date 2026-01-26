@@ -27,7 +27,7 @@ def adnm(password):
     password.append(chr(random.randint(48,57)))
     return password
 #function for adding special characters
-def adsp():
+def adsp(password):
     ran=random.randint(1,4)
     if ran==1:
         password.append(chr(random.randint(33,47)))
@@ -44,7 +44,7 @@ def ask(string,num,charopt):
         inp=input(f"would you like to add {string} to your password (y/n)")
         match inp:
             case "y":
-                list(charopt).append(num)
+                charopt.append(num)
                 return charopt
             case "n":
                 return 
@@ -57,15 +57,16 @@ def ask(string,num,charopt):
 #function for asking the length and which stuff thay want 
 def maine(charopt,password):
     while True:
-        print("how many do you want your password to be?")
+        print("how many charcters do you want your password to have?")
         length=insure()
         ask("uppercase letters",1,charopt)
         ask("lowercase letters",2,charopt)
         ask("numbers",3,charopt)
         ask("special characters",4,charopt)
         for i in range(0,length):
-            char=charopt[random.randint(0,len(charopt)-1)]
-            match char:
+            pastring=''
+            char=charopt[random.randint(0,(len(charopt)-1))]
+            match char: #randomizing when the characters appear
                 case 1:
                     adup(password)
                 case 2:
@@ -76,14 +77,17 @@ def maine(charopt,password):
                     adsp(password)
         for i in range(0,len(password)):
             pastring+=password[i]
-        print(f"Password:{pastring}")
-        inp=input("would you like to continue creating passwords")
+        print(f"Password:  {pastring}")
+        inp=input("would you like to continue creating passwords (y/n)")
         match inp:
             case "y":
-                list(charopt).append(num)
-                return charopt
+                password=[]
+                charopt=[]
+                continue
             case "n":
                 return 
             case _:
-                    print("please enter a valid input")
+                print("please enter a valid input")
                 continue
+
+maine(charopt,password)

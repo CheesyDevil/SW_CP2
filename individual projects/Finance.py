@@ -14,7 +14,7 @@ def ensure(l,h):
                 return int(num)
             else:
                 print("Please enter a valid input")
-#number ensure function (make sure user input is a number(without parameters)
+#number ensure function (make sure user input is a number)
 def insure():
     while True:
         num=input()

@@ -37,6 +37,7 @@ def adsp():
         password.append(chr(random.randint(91,96)))
     elif ran==4:
         password.append(chr(random.randint(123,126)))
+    return password
 #function for asking if they want to add a type of character
 def ask(string,num,charopt):
     while True:
@@ -54,12 +55,35 @@ def ask(string,num,charopt):
 
 
 #function for asking the length and which stuff thay want 
-def maine():
-    print("how many do you want your password to be?")
-    length=insure()
-    ask("uppercase letters",1,charopt)
-    ask("lowercase letters",2,charopt)
-    ask("numbers",3,charopt)
-    ask("special characters",4,charopt)
-
-
+def maine(charopt,password):
+    while True:
+        print("how many do you want your password to be?")
+        length=insure()
+        ask("uppercase letters",1,charopt)
+        ask("lowercase letters",2,charopt)
+        ask("numbers",3,charopt)
+        ask("special characters",4,charopt)
+        for i in range(0,length):
+            char=charopt[random.randint(0,len(charopt)-1)]
+            match char:
+                case 1:
+                    adup(password)
+                case 2:
+                    adlo(password)
+                case 3:
+                    adnm(password)
+                case 4: 
+                    adsp(password)
+        for i in range(0,len(password)):
+            pastring+=password[i]
+        print(f"Password:{pastring}")
+        inp=input("would you like to continue creating passwords")
+        match inp:
+            case "y":
+                list(charopt).append(num)
+                return charopt
+            case "n":
+                return 
+            case _:
+                    print("please enter a valid input")
+                continue

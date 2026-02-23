@@ -41,11 +41,7 @@ def deletetime(file):
     with open(file, 'r') as txt:
         lines=txt.readlines()
     with open (file,'w') as txt:
-        for index,line in enumerate(lines):
-            if index!=int(lines)-1 or index!=int(lines)-2 or index!=int(lines)-3:
-                txt.write(line)
-            else:
-                updates.append(line)
+        txt.writelines(lines[:-2])
     return updates
 
 def wrdcnttxt(file):
@@ -99,3 +95,21 @@ def viewtxt(file):
         print("Document Content:\n")
         for line in content:
             print(line)
+
+def select(file):
+    while True:
+        inp=input("what would you like to like to do to your file \n1: View\n2: Edit\n3: Check Word Count\n4: Exit")
+        match inp:
+            case "1":
+                viewtxt(file)
+            case "2":
+                deletetime(file)
+                writetxt(file)
+                wrdcnttxt(file)
+
+            case '3':
+                wrdcnttxt(file)
+            case '4':
+                break
+            case _:
+                continue

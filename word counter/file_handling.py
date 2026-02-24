@@ -45,18 +45,14 @@ def deletetime(file):
     return updates
 
 def wrdcnttxt(file):
-    x=deletetime(file)
     try:
-        x=deletetime(file)
         with open(file, 'r') as txt:
             wordcount=0
             for line in txt:
                 line.split()
                 wordcount+=len(line)
         with open(file,'a') as txt:
-            txt.write(f"\n")
-            txt.write(f"Word Count:{wordcount}\n")
-        return x
+            txt.write(f"\nWord Count:{wordcount}")
     except:
         print("please enter a valid file")
 
@@ -66,7 +62,7 @@ def writetxt(file):
         with open(file, 'a') as txt:
             while True:
                 nline=input("What would you like to add to your file?")
-                txt.write(f"{nline}\n")
+                txt.write(f"\n{nline}")
                 inp=input(f"would you like to continue (y/n)")
                 while True:
                     if inp!="y"and inp!='n':
@@ -96,20 +92,3 @@ def viewtxt(file):
         for line in content:
             print(line)
 
-def select(file):
-    while True:
-        inp=input("what would you like to like to do to your file \n1: View\n2: Edit\n3: Check Word Count\n4: Exit")
-        match inp:
-            case "1":
-                viewtxt(file)
-            case "2":
-                deletetime(file)
-                writetxt(file)
-                wrdcnttxt(file)
-
-            case '3':
-                wrdcnttxt(file)
-            case '4':
-                break
-            case _:
-                continue

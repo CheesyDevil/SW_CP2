@@ -10,5 +10,5 @@ def timecheck(file):
     rtim=time.localtime()
     tim=time.strftime("%Y-%m-%d %H:%M:%S",rtim)
     with open(file, 'a') as txt:
-        txt.write(f"Last update:{tim}")
+        txt.write(f"\nLast update:{tim}")
 

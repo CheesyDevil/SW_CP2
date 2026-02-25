@@ -49,10 +49,11 @@ def wrdcnttxt(file):
         with open(file, 'r') as txt:
             wordcount=0
             for line in txt:
-                line.split()
-                wordcount+=len(line)
+                l=line.split()
+                wordcount+=len(l)
         with open(file,'a') as txt:
-            txt.write(f"\nWord Count:{wordcount}")
+            txt.write(f"Word Count:{wordcount}\n")
+        wordcount=0
     except:
         print("please enter a valid file")
 
@@ -61,9 +62,9 @@ def writetxt(file):
     try:
         with open(file, 'a') as txt:
             while True:
-                nline=input("What would you like to add to your file?")
-                txt.write(f"\n{nline}")
-                inp=input(f"would you like to continue (y/n)")
+                nline=input("What would you like to add to your file?\n")
+                txt.write(f'{nline}\n')
+                inp=input(f"would you like to continue (y/n)\n")
                 while True:
                     if inp!="y"and inp!='n':
                         print("please enter a valid input")

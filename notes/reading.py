@@ -13,7 +13,7 @@ else: #Else happens WITH try
 
 
 try:
-    with open("notes/Class CSV sample - Sheet1.csv",mode="r") as sample:
+    with open("SW_CP2\\notes\\Class CSV sample - Sheet1.csv",mode='r') as sample:
         read=csv.reader(sample)
         header=next(read)
         users=[]
@@ -29,3 +29,4 @@ except:
 else:
     for user in users:
         print(user)
+    print(users[1]['username'])

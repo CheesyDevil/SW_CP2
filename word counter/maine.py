@@ -3,8 +3,7 @@ import file_handling as h
 import time_handling as t
 
 while True:
-    file=input("Please enter the exact file path for your document")
-    h.setup(file)
+    file=input("Please enter the exact file path for your document\n")
     if file:
         while True:
             inp=input("what would you like to like to do to your file \n1: View\n2: Edit\n3: Check Word Count\n4: Exit\n")

@@ -1,13 +1,24 @@
+import turtle
 
-'''dictionary={
-    "1":"0",
-    "2":"3"
-}
-print(dictionary["1"])
+def recursive_clone_draw(t, depth):
+    if depth == 0:
+        return
+    
+    # Clone the current turtle without naming it
+    new_clone = t.clone()
+    
+    # Manipulate the new clone
+    new_clone.forward(50)
+    new_clone.right(60)
+    
+    # Recursive call
+    recursive_clone_draw(new_clone, depth - 1)
 
-if '0' in dictionary.values():
-    print("yes")'''
+# Set up original turtle
+t = turtle.Turtle()
+t.speed(0)
 
-string=f"\negg\n"
-s=string.split()
-print(len(s))
+# Start recursion
+recursive_clone_draw(t, 5)
+
+turtle.done()

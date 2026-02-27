@@ -18,12 +18,7 @@ try:
         header=next(read)
         users=[]
         for line in read:
-            users.append(
-                {
-                    header[0]:line[0],
-                    header[1]:line[1]
-                }
-            )
+            users.append(line[0])
 except:
     print("not found")
 else:

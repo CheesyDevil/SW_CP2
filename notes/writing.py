@@ -21,7 +21,7 @@ with open('notes\\write_to_file.txt','r+') as file:
 print("code ends")'''
 
 
-'''import csv
+import csv
 
 users=[{'username':"user1","favorite color":'red'},{'username':"user2","favorite color":'green'},{'username':"user3","favorite color":'blue'}]
 with open("notes\\test.csv", 'r+' , newline='') as csvfile:
@@ -31,7 +31,7 @@ with open("notes\\test.csv", 'r+' , newline='') as csvfile:
 
     #writer.writerow(fieldnames)
     writer.writerows(users)
-'''
+
 
 
 

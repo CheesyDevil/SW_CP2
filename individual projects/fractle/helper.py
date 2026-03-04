@@ -2,27 +2,16 @@
 
 import turtle as t
 
-screen=t.Screen()
 
-
-turt=t.Turtle()
-
-
-def insure():#makes inpu an integer
-    while True:
-        num=input()
-        if f"{num}".isnumeric() and  int(num):
-            return int(num)
-        else:
-                print("Please enter a valid input")
 
 def setup(number):#set up to the nuber is correct
-    
+    turt=t.Turtle()
+    turt.hideturtle()
     number+=1
     fractal(turt,number)
-    turt.fillcolor("red")
 
 def fractal(turt, number):
+    turt.hideturtle()
     number-=1
     for i in range(0,3): #loop so it does all three sides
         turt.right(240)

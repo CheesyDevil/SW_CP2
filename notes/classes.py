@@ -15,3 +15,4 @@ pongo=Dog("pongo","dalmation",8)
 
 print(doug)
 print(doug.speak())
+print(doug.name)

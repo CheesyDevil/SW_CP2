@@ -38,6 +38,7 @@ class Gradebook:
     #Search by Name 
     def name_search(self):
         sname=input("What is the name of the student you want to search?").capitalize()
+        print(f'Grade level|ID|Name|Grade|Standing')
         for student in self.students:
             if f"{student.name}"==sname:
                 print(student)
@@ -54,6 +55,7 @@ class Gradebook:
                 break
             else:
                 print("Student IDs are only comprised of numbers")
+        print(f'Grade level|ID|Name|Grade|Standing')
         for student in self.students:
             if f"{student.id}"==sid:
                 print(student)
@@ -62,20 +64,22 @@ class Gradebook:
                 print("Student not Found")
     #print all students
     def p_students(self):
+        print(f'Grade level|ID|Name|Grade|Standing')
         for i in self.students:
             print(i)
     #print Highest Grade, Lowest grade and Average grade
     def grade_summary(self):
         grades=[]
         for i in self.students:
-            grades.append({i.grades})
+            grades.append(i.grades)
         grades.sort()
         student=len(grades)
         num=0
+        print(grades)
         for i in grades:
             num+=int(i)
         avg=num/student
-        print(f"Students:{student}\nHighest Grade:{grades[0]}\nLowest Grade:{grades[student-1]}\nClass Average:{avg}")
+        print(f"Students:{student}\nHighest Grade:{grades[0]}\nLowest Grade:{grades[student-1]}\nClass Average:{avg}\n")
     #Search by Grade Level
     def grade_search(self):
         while True:
@@ -84,6 +88,7 @@ class Gradebook:
                 break
             else:
                 print("Please enter Grade level as a number")
+        print(f'Grade level|ID|Name|Grade|Standing')
         for student in self.students:
             if f"{student.level}"==sgrade:
                 print(student)
